@@ -1,0 +1,74 @@
+{
+  "name": "Olist Analytics",
+  "dataColors": [
+    "#2F6E6A",
+    "#3C5470",
+    "#7A9471",
+    "#C9A227",
+    "#7A5C7E",
+    "#BC5B3E"
+  ],
+  "background": "#FFFFFF",
+  "foreground": "#1E1F22",
+  "tableAccent": "#2F6E6A",
+  "good": "#7A9471",
+  "neutral": "#6E7075",
+  "bad": "#BC5B3E",
+  "maximum": "#2F6E6A",
+  "center": "#B8B9BD",
+  "minimum": "#E7E7E7",
+  "null": "#6E7075",
+  "textClasses": {
+    "callout": {
+      "fontSize": 32,
+      "color": "#1E1F22"
+    },
+    "title": {
+      "fontSize": 14,
+      "color": "#1E1F22",
+      "fontFace": "Segoe UI Semibold"
+    },
+    "header": {
+      "fontSize": 12,
+      "color": "#1E1F22"
+    },
+    "label": {
+      "fontSize": 10,
+      "color": "#6E7075"
+    }
+  },
+  "visualStyles": {
+    "*": {
+      "*": {
+        "background": [
+          {
+            "color": { "solid": { "color": "#FFFFFF" } },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "show": false,
+            "radius": 4
+          }
+        ]
+      }
+    },
+    "card": {
+      "*": {
+        "labels": [
+          {
+            "color": { "solid": { "color": "#1E1F22" } },
+            "fontSize": 32
+          }
+        ],
+        "categoryLabels": [
+          {
+            "color": { "solid": { "color": "#6E7075" } },
+            "fontSize": 12
+          }
+        ]
+      }
+    }
+  }
+}
