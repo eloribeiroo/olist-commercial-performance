@@ -1,4 +1,4 @@
--- Criação das tabelas a partir dos CSVs (Volume)
+-- Criação das tabelas a partir dos CSVs 
 -- Fonte: Olist Brazilian E-Commerce Dataset (Kaggle)
 
 CREATE TABLE sellers AS
@@ -49,10 +49,21 @@ SELECT * FROM read_files(
   format => 'csv', header => true
 );
 
--- order_reviews exige tratamento especial: comentários de clientes contêm
--- quebras de linha e aspas mal-formatadas que quebram o parser CSV padrão.
--- multiLine => true resolve quebras de linha dentro de campos de texto.
--- unescapedQuoteHandling => 'BACK_TO_DELIMITER' resolve aspas soltas mal-formatadas.
+-- order_reviews exige tratamento especial: comentários de clientes
+-- contêm quebras de linha e aspas dentro do próprio texto, o que
+-- quebra o parser CSV padrão do Spark. Dois parâmetros resolvem:
+--
+--   multiLine => true
+--     Permite que um campo entre aspas contenha quebras de linha
+--     reais, sem que o parser interprete isso como fim do registro.
+--
+--   escape => '"'
+--     Informa que aspas duplicadas ("") dentro de um campo de texto
+--     representam uma aspas literal (padrão RFC 4180) — sem isso,
+--     o Spark usa barra invertida como escape por padrão, o que não
+--     bate com o formato real do arquivo e gera linhas corrompidas.
+--
+
 DROP TABLE IF EXISTS order_reviews;
 
 CREATE TABLE order_reviews AS
@@ -61,13 +72,5 @@ SELECT * FROM read_files(
   format => 'csv',
   header => true,
   multiLine => true,
-  unescapedQuoteHandling => 'BACK_TO_DELIMITER'
+  escape => '"'
 );
-
--- Camada "clean": remove ~0,02% de registros com review_id corrompido
--- (limitação residual conhecida da fonte, documentada em docs/data_quality_log.md)
-
-CREATE OR REPLACE TABLE order_reviews_clean AS
-SELECT *
-FROM order_reviews
-WHERE LENGTH(review_id) = 32;

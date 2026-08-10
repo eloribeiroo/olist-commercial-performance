@@ -1,4 +1,4 @@
--- Queries de negócio 
+-- Queries de negócio — Etapa 1 
 
 -- Pergunta 1: Quais sellers e categorias geram mais receita?
 SELECT
@@ -20,7 +20,7 @@ SELECT
     DATEDIFF(o.order_estimated_delivery_date, o.order_delivered_customer_date) AS dias_folga_estimativa,
     r.review_score
 FROM orders o
-JOIN order_reviews_clean r ON o.order_id = r.order_id
+JOIN order_reviews r ON o.order_id = r.order_id
 WHERE o.order_status = 'delivered'
   AND o.order_delivered_customer_date IS NOT NULL;
 
