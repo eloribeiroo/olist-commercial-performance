@@ -111,7 +111,6 @@ O modelo usa múltiplas tabelas fato conectadas às mesmas dimensões — um pad
 
 | Página | Conteúdo |
 |---|---|
-| **Capa** | Landing page com navegação por botões para as 4 páginas de conteúdo |
 | **Visão Executiva** | 4 KPIs principais + receita por mês + top sellers + receita por categoria + mapa de receita por estado |
 | **Performance Sellers** | KPIs de seller + scatter de desempenho (receita x ticket médio) + treemap de concentração + tabela detalhada com busca |
 | **Logística e Satisfação** | Scatter prazo x nota + indicador de % no prazo + evolução de prazo e nota ao longo do tempo |
